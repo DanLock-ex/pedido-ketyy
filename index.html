@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Para Kety ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffc0cb, #ff69b4);
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+#login {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BOTÃO CORAÇÃO */
+.heart-btn {
+    background: #ff1493;
+    color: white;
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+#conteudo {
+    display: none;
+    width: 100%;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+p {
+    font-size: 28px;
+}
+
+#contador {
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+#sim {
+    background: #ff1493;
+    padding: 15px 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+}
+
+#nao {
+    position: absolute;
+    background: #aaa;
+}
+
+.heart {
+    position: absolute;
+    animation: subir 6s linear infinite;
+}
+
+@keyframes subir {
+    from {transform: translateY(100vh);}
+    to {transform: translateY(-10vh);}
+}
+
+.lirio {
+    position: absolute;
+    font-size: 30px;
+    animation: subir 10s linear infinite;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+    <h2>Uma surpresa pra você 💖</h2>
+    <input id="senha" type="password" placeholder="Digite a senha">
+    <button onclick="verificarSenha()">Entrar</button>
+    <p id="erro"></p>
+</div>
+
+<!-- CONTEÚDO -->
+<div id="conteudo">
+    <div class="container">
+        <div id="texto"></div>
+        <div id="contador"></div>
+    </div>
+</div>
+
+<script>
+
+// SENHA
+function verificarSenha() {
+    let senha = document.getElementById("senha").value;
+
+    if (senha === "1502") {
+        document.getElementById("login").innerHTML = `
+            <h2>Um último passo 💖</h2>
+            <button class="heart-btn" onclick="comecar()">💖 Começar 💖</button>
+        `;
+    } else {
+        document.getElementById("erro").innerText = "Senha errada 😢";
+    }
+}
+
+// 🎵 MÚSICA DEFINITIVA (CORRIGIDA)
+let musicaGlobal;
+
+function comecar() {
+    musicaGlobal = new Audio("./alianca.mp3");
+
+    musicaGlobal.loop = true;
+    musicaGlobal.volume = 0;
+
+    musicaGlobal.play().catch(() => {
+        alert("Clique novamente para iniciar a música 💖");
+    });
+
+    // fade-in
+    let vol = 0;
+    let fade = setInterval(() => {
+        if (vol < 0.6) {
+            vol += 0.02;
+            musicaGlobal.volume = vol;
+        } else {
+            clearInterval(fade);
+        }
+    }, 200);
+
+    document.getElementById("login").style.display = "none";
+    document.getElementById("conteudo").style.display = "block";
+
+    iniciar();
+}
+
+// INÍCIO
+function iniciar() {
+
+let dataInicio = new Date("2026-02-07");
+
+function atualizarContador() {
+    let hoje = new Date();
+    let dias = Math.floor((hoje - dataInicio) / (1000*60*60*24));
+    document.getElementById("contador").innerText =
+        "Kety, desde que te conheci: " + dias + " dias ❤️";
+}
+
+setInterval(atualizarContador, 1000);
+atualizarContador();
+
+let textos = [
+`Amor eu nem sei explicar direito o quanto eu amo você, isso é um sentimento que vai muito além de qualquer palavra.....`,
+`É como se tudo fizesse mais sentido quando você está por perto, como se o mundo ficasse mais leve só por ter você nele..`,
+`Eu amo o seu jeito, o seu sorriso, até as pequenas coisas que você nem percebe, mas que pra mim são únicas..`,
+`Amo a forma como você me faz sentir, como se eu estivesse exatamente onde deveria estar..`
+`Se eu pudesse, te mostraria em cada detalhe do meu dia o quanto você é importante pra mim..`,
+`Porque não é só amor é admiração, é carinho, é vontade de estar junto, de cuidar, de fazer você feliz...`,
+`Eu te amo mais do que consigo dizer e, mesmo assim, ainda parece pouco perto do que eu sinto por você..`,
+`Amor eu estava pensando em tudo que a gente viveu até agora e dentro desse 1 mes que a gente se conhece voce iconseguiu se tornar tão importante na minha vida...`,
+`Desde o nosso primeiro dia conversando que foi naquela terça feira Eu comecei a esperar suas mensagens.`,
+`a gostar das nossas conversas, a sorrir quando via seu nome aparecer voce foi tomando parte dos meus dias....`,
+`Mesmo com a distância, você consegue estar presente na minha vida de um jeito que poucas pessoas conseguem..`,
+`Você faz meus dias ficarem mais leves, minhas noites mais felizes e meus pensamentos sempre acabam voltando pra você...`,
+`Eu gosto de conversar com você, de rir com você, de compartilhar coisas simples do dia a dia…..`,
+`e principalmente de saber que existe alguém do outro lado da tela que me entende e que me faz tão bem.`,
+`A verdade é que, com o tempo, você deixou de ser só alguém especial pra mim..`,
+`voce alegra meu dia todo dia quando eu acordo e vejo um bom dia seu, voce é a minha luz no fim do tunel..`,
+`voce passou a ser alguém que eu realmente quero ter na minha vida. Alguém que eu quero continuar .`,
+`conhecendo, cuidando e vivendo momentos juntos, mesmo que por enquanto seja através de uma tela...`,
+`Porque o que eu sinto por você é real. Cada conversa, cada risada, cada momento que a gente passa junto só me faz ter mais certeza disso...`,
+`Eu peço desculpas por ter demorado tanto pra fazer isso mas eu queria fazer algo legal e do meu bom grado ..`,
+`E é por isso que hoje eu quero te perguntar algo muito importante pra mim..`,
+];
+
+let index = 0;
+
+// DIGITAÇÃO
+function digitarTexto(texto, el, callback) {
+    let i = 0;
+    el.innerHTML = "";
+
+    function escrever() {
+        if (i < texto.length) {
+            el.innerHTML += texto.charAt(i);
+            i++;
+            setTimeout(escrever, 30);
+        } else {
+            setTimeout(callback, 3000); // ⏱️ 3 SEGUNDOS
+        }
+    }
+
+    escrever();
+}
+
+// MOSTRAR TEXTO
+function mostrarTexto() {
+    let div = document.getElementById("texto");
+
+    if (index < textos.length) {
+        div.innerHTML = "<p id='digitando'></p>";
+        let p = document.getElementById("digitando");
+
+        digitarTexto(textos[index], p, mostrarTexto);
+        index++;
+    } else {
+        setTimeout(mostrarPedido, 2000);
+    }
+}
+
+// PEDIDO
+function mostrarPedido() {
+    document.getElementById("texto").innerHTML = `
+        <h1>Kety, você aceita ser minha namorada? ❤️</h1>
+        <button id="sim" onclick="aceitou()">SIM 💖</button>
+    `;
+}
+
+window.aceitou = function() {
+    document.body.innerHTML = "<h1>Você me faz muito feliz ❤️</h1>";
+}
+
+// CORAÇÕES
+setInterval(() => {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤️";
+    h.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 6000);
+}, 500);
+
+// LÍRIOS
+setInterval(() => {
+    let f = document.createElement("div");
+    f.className = "lirio";
+    f.innerHTML = "🌸";
+    f.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(f);
+    setTimeout(() => f.remove(), 10000);
+}, 1500);
+
+mostrarTexto();
+
+}
+</script>
+
+</body>
+</html>
