@@ -18,6 +18,7 @@ body {
     overflow: hidden;
 }
 
+/* LOGIN */
 #login {
     position: absolute;
     width: 100%;
@@ -42,10 +43,11 @@ body {
 
 @keyframes pulse {
     0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
+    50% { transform: scale(1.1); }
     100% { transform: scale(1); }
 }
 
+/* CONTEÚDO */
 #conteudo {
     display: none;
     width: 100%;
@@ -65,6 +67,7 @@ p {
     font-size: 22px;
 }
 
+/* BOTÕES */
 #sim {
     background: #ff1493;
     padding: 15px 30px;
@@ -78,6 +81,7 @@ p {
     background: #aaa;
 }
 
+/* CORAÇÕES */
 .heart {
     position: absolute;
     animation: subir 6s linear infinite;
@@ -88,6 +92,7 @@ p {
     to {transform: translateY(-10vh);}
 }
 
+/* LÍRIOS */
 .lirio {
     position: absolute;
     font-size: 30px;
@@ -97,6 +102,10 @@ p {
 </head>
 
 <body>
+
+<audio id="musica" loop>
+    <source src="alianca.mp3" type="audio/mpeg">
+</audio>
 
 <!-- LOGIN -->
 <div id="login">
@@ -130,25 +139,18 @@ function verificarSenha() {
     }
 }
 
-// 🎵 MÚSICA DEFINITIVA (CORRIGIDA)
-let musicaGlobal;
-
+// INICIAR COM MÚSICA
 function comecar() {
-    musicaGlobal = new Audio("./alianca.mp3");
+    let audio = document.getElementById("musica");
 
-    musicaGlobal.loop = true;
-    musicaGlobal.volume = 0;
+    audio.volume = 0;
+    audio.play();
 
-    musicaGlobal.play().catch(() => {
-        alert("Clique novamente para iniciar a música 💖");
-    });
-
-    // fade-in
     let vol = 0;
     let fade = setInterval(() => {
         if (vol < 0.6) {
             vol += 0.02;
-            musicaGlobal.volume = vol;
+            audio.volume = vol;
         } else {
             clearInterval(fade);
         }
@@ -201,7 +203,6 @@ let textos = [
 
 let index = 0;
 
-// DIGITAÇÃO
 function digitarTexto(texto, el, callback) {
     let i = 0;
     el.innerHTML = "";
@@ -212,14 +213,13 @@ function digitarTexto(texto, el, callback) {
             i++;
             setTimeout(escrever, 30);
         } else {
-            setTimeout(callback, 3000); // ⏱️ 3 SEGUNDOS
+            setTimeout(callback, 5000);
         }
     }
 
     escrever();
 }
 
-// MOSTRAR TEXTO
 function mostrarTexto() {
     let div = document.getElementById("texto");
 
@@ -234,7 +234,6 @@ function mostrarTexto() {
     }
 }
 
-// PEDIDO
 function mostrarPedido() {
     document.getElementById("texto").innerHTML = `
         <h1>Kety, você aceita ser minha namorada? ❤️</h1>
